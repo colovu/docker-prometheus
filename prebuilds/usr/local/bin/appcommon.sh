@@ -67,7 +67,7 @@ app_enable_remote_connections() {
 
 # 清理初始化应用时生成的临时文件
 app_clean_tmp_file() {
-    LOG_D "Clean ${APP_NAME} tmp files for init..."
+    LOG_D "Clean ${APP_NAME} tmp files..."
 
 }
 
