@@ -148,4 +148,4 @@ ENTRYPOINT ["entrypoint.sh"]
 WORKDIR ${APP_DATA_DIR}
 
 # 应用程序的服务命令，必须使用非守护进程方式运行。如果使用变量，则该变量必须在运行环境中存在（ENV可以获取）
-CMD ["${APP_EXEC}", "--config.file=${APP_CONF_DIR}/prometheus.yml", "--storage.tsdb.path=${APP_DATA_DIR}", "--web.console.libraries=${APP_BASE_DIR}/console_libraries", "--web.console.templates=${APP_BASE_DIR}/consoles"]
+CMD ["${APP_EXEC}", "--config.file=${APP_CONF_DIR}/prometheus.yml", "--storage.tsdb.path=${APP_DATA_DIR}", "--web.console.libraries=${APP_HOME_DIR}/console_libraries", "--web.console.templates=${APP_HOME_DIR}/consoles"]
