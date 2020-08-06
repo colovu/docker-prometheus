@@ -4,13 +4,13 @@
 # 应用通用业务处理函数
 
 # 加载依赖脚本
-#. /usr/local/scripts/liblog.sh          # 日志输出函数库
 . /usr/local/scripts/libcommon.sh       # 通用函数库
 . /usr/local/scripts/libfile.sh
 . /usr/local/scripts/libfs.sh
 . /usr/local/scripts/libos.sh
 . /usr/local/scripts/libservice.sh
 . /usr/local/scripts/libvalidations.sh
+. /usr/local/scripts/libnet.sh
 
 # 函数列表
 
@@ -67,7 +67,7 @@ app_enable_remote_connections() {
 
 # 清理初始化应用时生成的临时文件
 app_clean_tmp_file() {
-    LOG_D "Clean ${APP_NAME} tmp files..."
+    LOG_D "Clean ${APP_NAME} tmp files for init..."
 
 }
 
@@ -80,7 +80,7 @@ app_clean_from_restart() {
 
     )
 
-    for file in "${files[@]}"; do
+    for file in ${files[@]}; do
         if [[ -f "$file" ]]; then
             LOG_I "Cleaning stale $file file"
             rm "$file"
