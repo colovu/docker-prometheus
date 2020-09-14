@@ -1,4 +1,4 @@
-# 简介
+# Prometheus
 
 针对 [Prometheus](https://prometheus.io) 应用的 Docker 镜像，用于提供 Prometheus 服务。
 
@@ -6,11 +6,11 @@
 
 **版本信息**：
 
-- 2.19、2.19.2、latest
+- 2.19、latest
 
 **镜像信息**
 
-* 镜像地址：colovu/promethesu:latest
+* 镜像地址：colovu/promethesu:
 
 
 
@@ -19,7 +19,7 @@
 Docker 快速启动命令：
 
 ```shell
-$ docker run -d --name prometheus colovu/prometheus:latest
+$ docker run -d colovu/prometheus
 ```
 
 Docker-Compose 快速启动命令：
