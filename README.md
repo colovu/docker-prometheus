@@ -10,7 +10,7 @@
 
 **镜像信息**
 
-* 镜像地址：colovu/promethesu:
+* 镜像地址：registry.cn-shenzhen.aliyuncs.com/colovu/promethesu:2.19
 
 
 
@@ -19,7 +19,7 @@
 Docker 快速启动命令：
 
 ```shell
-$ docker run -d colovu/prometheus
+$ docker run -d registry.cn-shenzhen.aliyuncs.com/colovu/prometheus:2.19
 ```
 
 Docker-Compose 快速启动命令：
@@ -106,7 +106,7 @@ $ cp ./prometheus.yml /tmp/conf/prometheus/
 
 ## 更新记录
 
-- 2020.7.25：2.9、latest
+- 2020.7.25：2.19、latest
 
 
 

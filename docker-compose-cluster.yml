@@ -1,20 +1,20 @@
-version: '3.6'
+version: '3.8'
 
 # 可以使用 scale 动态扩容容器：docker-compose scale app-name=3
 
 services:
   prometheus1:
-    image: 'colovu/prometheus:latest'
+    image: 'registry.cn-shenzhen.aliyuncs.com/colovu/prometheus:2.19'
     ports:
       - '9091:9090'
 
   prometheus2:
-    image: 'colovu/prometheus:latest'
+    image: 'registry.cn-shenzhen.aliyuncs.com/colovu/prometheus:2.19'
     ports:
       - '9092:9090'
 
   prometheus3:
-    image: 'colovu/prometheus:latest'
+    image: 'registry.cn-shenzhen.aliyuncs.com/colovu/prometheus:2.19'
     ports:
       - '9093:9090'
 
