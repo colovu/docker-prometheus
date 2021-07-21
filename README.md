@@ -128,6 +128,7 @@ $ cp ./prometheus.yml /tmp/conf/prometheus/
 
 ## 更新记录
 
+- 2021.7.21: 更新软件版本为 2.28.1
 - 2020.7.25：2.19、latest
 
 

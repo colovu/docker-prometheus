@@ -5,7 +5,7 @@
 
 # 设置当前应用名称及版本
 ARG app_name=prometheus
-ARG app_version=2.19.2
+ARG app_version=2.28.1
 
 # 设置默认仓库地址，默认为 阿里云 仓库
 ARG registry_url="registry.cn-shenzhen.aliyuncs.com"
@@ -45,7 +45,7 @@ RUN set -eux; \
 	dpkgOsArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
 	dpkgOsName="$(uname | tr [:'upper':] [:'lower':])"; \
 	appName="${APP_NAME}-${APP_VERSION}.${dpkgOsName}-${dpkgOsArch}.tar.gz"; \
-	sha256="68382959f73354b30479f9cc3e779cf80fd2e93010331652700dcc71f6b05586"; \
+	sha256="91dd91e13f30fe520e01175ca1027dd09a458d4421a584ba557ba88b38803f27"; \
 	[ ! -z ${local_url} ] && localURL=${local_url}/prometheus; \
 	appUrls="${localURL:-} \
 		https://github.com/prometheus/prometheus/releases/download/v${APP_VERSION} \
@@ -84,8 +84,8 @@ LABEL \
 	"Vendor"="Endial Fang (endial@126.com)"
 
 # 从预处理过程中拷贝软件包(Optional)，可以使用阶段编号或阶段命名定义来源
-COPY --from=builder /tmp/prometheus-2.19.2.linux-amd64 /usr/local/prometheus
-COPY --from=builder /tmp/prometheus-2.19.2.linux-amd64/prometheus.yml /etc/prometheus
+COPY --from=builder /tmp/prometheus-${APP_VERSION}.linux-amd64 /usr/local/prometheus
+COPY --from=builder /tmp/prometheus-${APP_VERSION}.linux-amd64/prometheus.yml /etc/prometheus
 
 # 拷贝应用使用的客制化脚本，并创建对应的用户及数据存储目录
 COPY customer /
