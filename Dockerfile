@@ -116,8 +116,8 @@ EXPOSE 9090
 # 应用健康状态检查
 #HEALTHCHECK --interval=30s --timeout=30s --retries=3 \
 #	CMD curl -fs http://localhost:8080/ || exit 1
-#HEALTHCHECK --interval=10s --timeout=10s --retries=3 \
-#	CMD netstat -ltun | grep 9090
+HEALTHCHECK --interval=10s --timeout=10s --retries=3 \
+	CMD netstat -ltun | grep 9090
 
 # 使用 non-root 用户运行后续的命令
 USER 1001
