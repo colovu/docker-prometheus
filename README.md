@@ -4,13 +4,18 @@
 
 详细信息可参照：[官方说明](https://prometheus.io/docs/introduction/overview/)
 
-**版本信息**：
+**版本信息：**
 
 - 2.19、latest
 
-**镜像信息**
+**镜像信息：**
 
-* 镜像地址：registry.cn-shenzhen.aliyuncs.com/colovu/promethesu:2.19
+* 镜像地址：
+  - 阿里云: registry.cn-shenzhen.aliyuncs.com/colovu/promethesu
+  - DockerHub：colovu/promethesu
+  * 依赖镜像：debian:buster
+
+> 后续相关命令行默认使用`[Docker Hub](https://hub.docker.com)`镜像服务器做说明
 
 
 
@@ -19,14 +24,28 @@
 Docker 快速启动命令：
 
 ```shell
-$ docker run -d registry.cn-shenzhen.aliyuncs.com/colovu/prometheus:2.19
+# 从 Docker Hub 服务器下载镜像并启动
+$ docker run -d --name promethesu colovu/promethesu
+
+# 从 Aliyun 服务器下载镜像并启动
+$ docker run -d --name promethesu registry.cn-shenzhen.aliyuncs.com/colovu/promethesu
 ```
+
+- `colovu/imgname:<TAG>`：镜像名称及版本标签；标签不指定时默认使用`latest`
+
+
+
 
 Docker-Compose 快速启动命令：
 
 ```shell
-$ curl -sSL https://raw.githubusercontent.com/colovu/docker-prometheus/master/docker-compose.yml > docker-compose.yml
+# 从 Gitee 下载 Compose 文件
+$ curl -sSL -o https://gitee.com/colovu/docker-promethesu/raw/master/docker-compose.yml
 
+# 从 Github 下载 Compose 文件
+$ curl -sSL -o https://raw.githubusercontent.com/colovu/docker-promethesu/master/docker-compose.yml
+
+# 创建并启动容器
 $ docker-compose up -d
 ```
 
@@ -84,9 +103,8 @@ $ cp ./prometheus.yml /tmp/conf/prometheus/
 
 如果没有必要，可选配置参数可以不用定义，直接使用对应的默认值，主要包括：
 
-#### `ENV_DEBUG`
+- `ENV_DEBUG`：默认值：**false**。设置是否输出容器调试信息。可选值：no、true、yes
 
-默认值：**false**。设置是否输出容器调试信息。可设置为：1、true、yes
 
 
 
@@ -94,13 +112,17 @@ $ cp ./prometheus.yml /tmp/conf/prometheus/
 
 ### 容器安全
 
-本容器默认使用应用对应的运行时用户及用户组运行应用，以加强容器的安全性。在使用非`root`用户运行容器时，相关的资源访问会受限；应用仅能操作镜像创建时指定的路径及数据。使用`Non-root`方式的容器，更适合在生产环境中使用。
+本容器默认使用`non-root`运行应用，以加强容器的安全性。在使用`non-root`用户运行容器时，相关的资源访问会受限；应用仅能操作镜像创建时指定的路径及数据。使用`non-root`方式的容器，更适合在生产环境中使用。
+
+
+
+如果需要切换为`root`方式运行应用，可以在启动命令中增加`-u root`以指定运行的用户。
 
 
 
 ## 注意事项
 
-- 容器中启动参数不能配置为后台运行，如果应用使用后台方式运行，则容器的启动命令会在运行后自动退出，从而导致容器退出
+- 容器中应用的启动参数不能配置为后台运行，如果应用使用后台方式运行，则容器的启动命令会在运行后自动退出，从而导致容器退出
 
 
 
