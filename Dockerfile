@@ -84,8 +84,8 @@ LABEL \
 	"Vendor"="Endial Fang (endial@126.com)"
 
 # 从预处理过程中拷贝软件包(Optional)，可以使用阶段编号或阶段命名定义来源
-COPY --from=builder /tmp/prometheus-2.19.2.linux-amd64 /usr/local/prometheus
-COPY --from=builder /tmp/prometheus-2.19.2.linux-amd64/prometheus.yml /etc/prometheus
+COPY --from=builder /tmp/prometheus-${APP_VERSION}.linux-amd64 /usr/local/prometheus
+COPY --from=builder /tmp/prometheus-${APP_VERSION}.linux-amd64/prometheus.yml /etc/prometheus
 
 # 拷贝应用使用的客制化脚本，并创建对应的用户及数据存储目录
 COPY customer /
